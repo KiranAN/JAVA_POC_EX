@@ -24,7 +24,7 @@ public class UserController {
 	}
 	
 	@POST
-	@Produces(MediaType.APPLICATION_JSON)	
+	@Consumes(MediaType.APPLICATION_JSON)	
 	@Path("/create")
 	public int createUser(UserMsg msg) {
 		UserDAOImpl userInstance = UserDAOImpl.getInstance();
