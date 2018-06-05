@@ -32,10 +32,11 @@ public class UserController {
 	}
 	
 	@PUT	
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/update/{id}")
-	public void updateUser(@PathParam("id") int id) {
+	public void updateUser(UserMsg msg,@PathParam("id") int id) {
 		UserDAOImpl userInstance = UserDAOImpl.getInstance();
-		userInstance.updateUser(id);		
+		userInstance.updateUser(msg,id);		
 	}
 	
 	@POST	
