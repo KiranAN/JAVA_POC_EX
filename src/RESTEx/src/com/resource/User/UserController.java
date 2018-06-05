@@ -31,20 +31,18 @@ public class UserController {
 		return userInstance.createUser(msg);		
 	}
 	
-	@PUT
-	@Produces(MediaType.APPLICATION_JSON)	
+	@PUT	
 	@Path("/update/{id}")
 	public UserMsg updateUser(@PathParam("id") int id) {
 		UserDAOImpl userInstance = UserDAOImpl.getInstance();
-		return userInstance.getUser(id);		
+		return userInstance.updateUser(id);		
 	}
 	
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)	
+	@POST	
 	@Path("/delete/{id}")
-	public UserMsg deleteUser(@PathParam("id") int id) {
+	public int deleteUser(@PathParam("id") int id) {
 		UserDAOImpl userInstance = UserDAOImpl.getInstance();
-		return userInstance.getUser(id);		
+		return userInstance.deleteUser(id);		
 	}
 }
 
