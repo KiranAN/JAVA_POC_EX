@@ -40,7 +40,7 @@ public class UserController {
 	
 	@POST	
 	@Path("/delete/{id}")
-	public int deleteUser(@PathParam("id") int id) {
+	public boolean deleteUser(@PathParam("id") int id) {
 		UserDAOImpl userInstance = UserDAOImpl.getInstance();
 		return userInstance.deleteUser(id);		
 	}
