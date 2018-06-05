@@ -83,11 +83,11 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public void updateUser(UserMsg user) {
+	public void updateUser(UserMsg user, int id) {
 		Handle handle = null;
 		try {						
 			handle = jdbi.open();				
-			handle.execute("UPDATE USERS SET (Name,Age,Address, Salary) VALUES (?,?,?,?)",user.name,user.age,user.address,user.salary);
+			handle.execute("UPDATE USERS SET Name = ?,Age =?,Address =?, Salary =? WHERE id = ?",user.name,user.age,user.address,user.salary,id);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
