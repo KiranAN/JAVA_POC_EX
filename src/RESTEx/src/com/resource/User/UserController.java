@@ -33,7 +33,7 @@ public class UserController {
 	
 	@PUT	
 	@Path("/update/{id}")
-	public UserMsg updateUser(@PathParam("id") int id) {
+	public void updateUser(@PathParam("id") int id) {
 		UserDAOImpl userInstance = UserDAOImpl.getInstance();
 		return userInstance.updateUser(id);		
 	}
