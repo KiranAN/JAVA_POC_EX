@@ -46,21 +46,21 @@ public class UserDAOImpl implements UserDAO{
 			List<Map<String, Object>> l = q.list();
 			List<UserMsg> users = new ArrayList<UserMsg>();
 			for (Map<String, Object> r : l) {
-	            UserMsg user = new UserMsg(r.get("name").toString(),
-	            		Integer.parseInt(r.get("age").toString()),
-	            		r.get("address").toString(),
-	            		Double.parseDouble((r.get("salary").toString())));      
-	            users.add(user);
-            }
+			    UserMsg user = new UserMsg(r.get("name").toString(),
+					Integer.parseInt(r.get("age").toString()),
+					r.get("address").toString(),
+					Double.parseDouble((r.get("salary").toString())));      
+			    users.add(user);
+			 }
 			
-			return users;						
+		return users;						
 		}catch(Exception e){
 		}
 		finally {		
-            if (handle != null) {
-                handle.close();
-            }
-        }
+		    if (handle != null) {
+			handle.close();
+		    }
+		}
 		return null;
 	}
 
@@ -91,10 +91,10 @@ public class UserDAOImpl implements UserDAO{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-            if (handle != null) {
-                handle.close();
-            }
-        }				
+		    if (handle != null) {
+			handle.close();
+		    }
+		}				
 	}
 
 	@Override
@@ -106,10 +106,10 @@ public class UserDAOImpl implements UserDAO{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-            if (handle != null) {
-                handle.close();
-            }
-        }
+		    if (handle != null) {
+			handle.close();
+		    }
+		}
 		return true;
 	}
 
@@ -122,10 +122,10 @@ public class UserDAOImpl implements UserDAO{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-            if (handle != null) {
-                handle.close();
-            }
-        }
+		    if (handle != null) {
+			handle.close();
+		    }
+		}
 		// TO DO : SHOULD BE ROW ID
 		return 1;
 	}
