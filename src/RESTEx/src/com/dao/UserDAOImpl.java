@@ -60,8 +60,7 @@ public class UserDAOImpl implements UserDAO{
 		    if (handle != null) {
 			handle.close();
 		    }
-		}
-		return null;
+		}		
 	}
 
 	@Override
