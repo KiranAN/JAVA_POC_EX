@@ -10,7 +10,7 @@ import java.util.List;
 public class UserController {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)	
-	public List<UserMsg> getAccountDetails() {
+	public List<UserMsg> getUsers() {
 		UserDAOImpl userInstance = UserDAOImpl.getInstance();
 		return userInstance.getAllUsers();		
 	}
