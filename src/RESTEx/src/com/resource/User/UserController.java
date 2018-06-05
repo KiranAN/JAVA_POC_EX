@@ -35,7 +35,7 @@ public class UserController {
 	@Path("/update/{id}")
 	public void updateUser(@PathParam("id") int id) {
 		UserDAOImpl userInstance = UserDAOImpl.getInstance();
-		return userInstance.updateUser(id);		
+		userInstance.updateUser(id);		
 	}
 	
 	@POST	
