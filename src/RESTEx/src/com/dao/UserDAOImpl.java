@@ -75,10 +75,10 @@ public class UserDAOImpl implements UserDAO{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-            if (handle != null) {
-                handle.close();
-            }
-        }
+		    if (handle != null) {
+			handle.close();
+		    }
+		}
 		return null;
 	}
 
