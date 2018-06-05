@@ -1,0 +1,8 @@
+package com.jdbiImpl;
+
+
+import org.skife.jdbi.v2.DBI;
+public class JdbiDriver {
+	DBI jdbi = new DBI("jdbc:h2:mem:test");
+	
+}

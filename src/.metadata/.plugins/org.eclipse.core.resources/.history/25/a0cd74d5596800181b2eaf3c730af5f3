@@ -1,0 +1,42 @@
+package com.resource.Account;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import com.dao.jdbiImpl.*;
+
+@Path("/Account")
+public class AccountController {
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)	
+	public String getAccountDetails() {
+		String username ="User_550";
+		JdbiDriver driver = new JdbiDriver();
+		driver.registerDB();
+		return username;
+	}
+	
+	@PUT
+	@Produces(MediaType.TEXT_PLAIN)	
+	@Path("SetAccount")
+	public String setAccountDetails() {
+		String successMsg ="Account Updated Successfully";
+		return successMsg;
+	}
+	
+	//@GET
+	//@Consumes(MediaType.APPLICATION_JSON)	
+	//public String login(LoginMsg loginMsg) {
+		//loginDAO.
+		//driver.RegisterDB();
+		//return username;
+	//}
+	
+	@PUT
+	@Produces(MediaType.TEXT_PLAIN)	
+	@Path("Logout")
+	public String logout() {
+		String successMsg ="Account Updated Successfully";
+		return successMsg;
+	}
+}
+

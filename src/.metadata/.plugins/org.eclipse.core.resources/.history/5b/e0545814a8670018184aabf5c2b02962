@@ -1,0 +1,19 @@
+package com.model;
+
+public class LoginMsg {
+	String username;
+	String password;
+	public void loginMsg(){
+		
+	}
+	
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(final String username) {
+        this.username = username;
+    }
+
+}

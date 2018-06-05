@@ -1,0 +1,93 @@
+package com.dao.jdbiImpl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.skife.jdbi.v2.DBI;
+import org.skife.jdbi.v2.Handle;
+import org.skife.jdbi.v2.Query;
+
+import com.model.UserMsg;
+import com.model.UserMsgMapper;
+
+public class UserDAOImpl implements UserDAO{
+	public static UserDAOImpl instance = null;	
+	
+	public static UserDAOImpl getInstance() {
+		if(instance == null) {
+			instance = new UserDAOImpl();
+		}
+		return instance;
+	}
+	
+	public UserDAOImpl() {
+		//JdbiDriver.loadDriver();
+	}
+	
+	@Override
+	public List<UserMsg> getAllUsers() {
+		Handle handle = null;
+		try {
+			System.out.println("Loading driver...");
+			Class.forName("org.h2.Driver");
+			System.out.println("Driver loaded!");
+			DBI jdbi = new DBI("jdbc:h2:~/test;AUTO_SERVER=TRUE","sa","sa");		
+			handle = jdbi.open();			
+			Query<Map<String, Object>> q =handle.createQuery("SELECT * FROM CUSTOMERS");
+			List<Map<String, Object>> l = q.list();
+			List<UserMsg> users = new ArrayList<UserMsg>();
+			for (Map<String, Object> r : l) {
+	            UserMsg user = new UserMsg(r.get("name").toString(),
+	            		Integer.parseInt(r.get("age").toString()),
+	            		r.get("address").toString(),
+	            		Double.parseDouble((r.get("salary").toString())));      
+	            users.add(user);
+            }
+			
+			return users;						
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}finally {
+            if (handle != null) {
+                handle.close();
+            }
+        }
+		return null;
+	}
+
+	@Override
+	public UserMsg getUser(int id) {
+		Handle handle = null;
+		try {
+			System.out.println("Loading driver...");
+			Class.forName("org.h2.Driver");
+			System.out.println("Driver loaded!");
+			DBI jdbi = new DBI("jdbc:h2:~/test;AUTO_SERVER=TRUE","sa","sa");		
+			handle = jdbi.open();			
+			Query<Map<String, Object>> q =handle.createQuery("SELECT * FROM CUSTOMERS WHERE ID = ?").bind(0, id);		
+			UserMsg user = q.map(UserMsg.class).first();
+			return user;						
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}finally {
+            if (handle != null) {
+                handle.close();
+            }
+        }
+		return null;
+	}
+
+	@Override
+	public void updateUser(UserMsg user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteUser(UserMsg user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

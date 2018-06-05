@@ -1,0 +1,28 @@
+package com.resource.Account;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import com.dao.jdbiImpl.*;
+import com.model.*;
+import java.util.List;
+
+@Path("/Account")
+public class AccountController {
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)	
+	public List<UserMsg> getAccountDetails() {
+		UserDAOImpl userInstance = UserDAOImpl.getInstance();
+		return userInstance.getAllUsers();		
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)	
+	@Path("User/{id}")
+	public UserMsg getUser(@PathParam("id") int id) {
+		UserDAOImpl userInstance = UserDAOImpl.getInstance();
+		return userInstance.getUser(id);		
+	}
+	
+	
+}
+

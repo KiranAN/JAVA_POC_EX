@@ -1,0 +1,11 @@
+package com.jdbiImpl;
+
+import org.skife.jdbi.v2.DBI;
+import org.skife.jdbi.v2.Handle;
+
+public class JdbiDriver {
+	DBI jdbi = new DBI("jdbc:h2:mem:test");
+	Handle h = jdbi.open();
+	
+	h.execute("Create table Profile (id int primary key, name varchar(100))");
+}

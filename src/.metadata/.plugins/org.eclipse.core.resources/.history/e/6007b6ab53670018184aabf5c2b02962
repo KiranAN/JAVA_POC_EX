@@ -1,0 +1,20 @@
+package com.jdbiImpl;
+
+import org.skife.jdbi.v2.DBI;
+import org.skife.jdbi.v2.Handle;
+
+public class JdbiDriver {		
+	try {
+		DBI jdbi = new DBI("jdbc:h2:mem:test");
+		final Handle handle = jdbi.open();
+		handle.execute("Create table Profile (id int primary key, name varchar(100))");
+		handle.createStatement("insert into something(id, name) values (:id, :name)")
+	    .bind("id", 4)
+	    .bind("name", "Martin")
+	    .execute();
+		handle.close();
+	}catch(Exception ex) {
+		throw ex;
+	}	
+}
+	

@@ -1,0 +1,61 @@
+package com.dao.jdbiImpl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.skife.jdbi.v2.DBI;
+import org.skife.jdbi.v2.Handle;
+
+import com.model.UserMsg;
+import com.model.UserMsgMapper;
+
+public class UserDAOImpl implements UserDAO{
+	public static UserDAOImpl instance = null;	
+	
+	public static UserDAOImpl getInstance() {
+		if(instance == null) {
+			instance = new UserDAOImpl();
+		}
+		return instance;
+	}
+	
+	public UserDAOImpl() {
+		//JdbiDriver.loadDriver();
+	}
+	
+	@Override
+	public List<UserMsg> getAllUsers() {
+		try {
+			System.out.println("Loading driver...");
+			Class.forName("org.h2.Driver");
+			System.out.println("Driver loaded!");
+			DBI jdbi = new DBI("jdbc:h2:~/test;AUTO_SERVER=TRUE","sa","sa");		
+			final Handle handle = jdbi.open();						
+			List<UserMsg> userMap =handle.createQuery("SELECT * FROM CUSTOMERS").mapTo(UserMsg.class).list();			
+			handle.close();
+			return userMap;						
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public UserMsg getUser(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateUser(UserMsg user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteUser(UserMsg user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

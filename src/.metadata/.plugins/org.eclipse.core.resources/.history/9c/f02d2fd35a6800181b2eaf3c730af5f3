@@ -1,0 +1,52 @@
+package com.dao.jdbiImpl;
+
+import java.sql.SQLException;
+
+import org.skife.jdbi.v2.DBI;
+import org.skife.jdbi.v2.Handle;
+
+public class JdbiDriver {
+	static String connectionString = "jdbc:h2:~/test";
+	public void registerDB() {		
+		try {	
+			Class.forName("org.h2.Driver");
+			DBI jdbi = new DBI("jdbc:h2:~/test","sa","sa");
+			final Handle handle = jdbi.open();
+			//handle.execute("Create table Profile (id int primary key, name varchar(100))");
+			handle.createStatement("insert into Profile(id, name) values (:id, :name)")
+		    .bind("id", 10)
+		    .bind("name", "Martin2")
+		    .execute();
+			handle.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}	
+	
+	public static void loadDriver() {
+        // Load the JDBC driver
+		try {	
+			System.out.println("Loading driver...");
+			Class.forName("org.h2.Driver");
+			System.out.println("Driver loaded!");
+		}catch(ClassNotFoundException e) {
+			throw new RuntimeException("Cannot find the driver in the classpath!", e);
+		}
+	}
+	
+	public static String getConnectionString() {
+		return connectionString;
+	}
+	
+	public static Handle getH2Handle() {
+		try {
+			DBI jdbi = new DBI(connectionString,"sa","sa");		
+			final Handle handle = jdbi.open();
+			return handle;	
+		}catch(Exception e) {
+			throw e;
+		}
+		
+	}
+}
+	

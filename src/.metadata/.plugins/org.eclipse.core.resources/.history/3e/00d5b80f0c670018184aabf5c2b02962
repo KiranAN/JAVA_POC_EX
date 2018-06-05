@@ -1,0 +1,7 @@
+package com.hello;
+import java.ws.rs.Path;
+
+@Path("/helloWorld")
+public class HelloWorld {
+
+}

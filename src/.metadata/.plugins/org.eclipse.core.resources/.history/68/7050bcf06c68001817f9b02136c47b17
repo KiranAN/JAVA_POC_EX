@@ -1,0 +1,16 @@
+package com.model;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import org.skife.jdbi.v2.StatementContext;
+import org.skife.jdbi.v2.tweak.ResultSetMapper;
+
+public class UserMsgMapper implements ResultSetMapper<List<UserMsg>>{
+	public List<UserMsg> map(int index, ResultSet r, StatementContext ctx) throws SQLException
+	{
+		List<UserMsg> list = null;
+		list.add(new UserMsg(r.getString("name"),r.getInt("age"),r.getString("address"),r.getDouble("salary")));
+		return list;
+	}
+}

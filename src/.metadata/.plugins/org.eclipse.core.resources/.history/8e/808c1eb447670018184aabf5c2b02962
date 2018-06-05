@@ -1,0 +1,22 @@
+package com.Account;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+
+@Path("/Account")
+public class AccountController {
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)	
+	public String getAccountDetails() {
+		String greeting ="Srirama";
+		return greeting;
+	}
+	
+	@PUT
+	@Produces(MediaType.TEXT_PLAIN)	
+	@Path("/SetAccount")
+	public String setAccountDetails() {
+		String greeting ="Srirama";
+		return greeting;
+	}
+}
+

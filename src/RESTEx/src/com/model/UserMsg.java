@@ -1,0 +1,32 @@
+package com.model;
+
+public class UserMsg {	
+	public String name;
+	public int age;
+	public String address;
+	public double salary;
+	
+	public UserMsg(String name, int age, String address, double salary) {
+		this.name = name;
+		this.age = age;
+		this.address = address;
+		this.salary = salary;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public int getAge() {
+		return this.age;
+	}
+	
+	public double getSalary() {
+		return this.salary;
+	}
+	
+	public String getAddress() {
+		return this.address;
+	}
+}
+

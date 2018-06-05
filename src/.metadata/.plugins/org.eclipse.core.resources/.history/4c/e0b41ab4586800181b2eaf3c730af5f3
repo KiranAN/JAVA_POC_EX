@@ -1,0 +1,44 @@
+package com.dao.jdbiImpl;
+
+import java.util.List;
+
+import org.skife.jdbi.v2.Handle;
+
+import com.model.UserMsg;
+
+public class UserDAOImpl implements UserDAO{
+		
+	public UserDAOImpl() {
+		JdbiDriver.loadDriver();
+	}
+	
+	@Override
+	public List<UserMsg> getAllUsers() {
+		try{
+			Handle h = JdbiDriver.getH2Handle();
+			h.execute("SELECT * FROM USERS");
+		}catch(Exception e) {
+			throw e;
+		}
+		return null;
+	}
+
+	@Override
+	public UserMsg getUser(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateUser(UserMsg user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteUser(UserMsg user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

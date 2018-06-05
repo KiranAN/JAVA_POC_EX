@@ -1,0 +1,15 @@
+package com.hello;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+
+@Path("/helloWorld")
+public class HelloWorld {
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("{name}")
+	public String getGreeting() {
+		String greeting ="Hello";
+		return greeting;
+	}
+}
